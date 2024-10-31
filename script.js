@@ -17,14 +17,13 @@ function addTask() {
     
     listItem.appendChild(removeButton);
     todoList.appendChild(listItem);
-    todoInput.value = ''; // Clear the input
+    todoInput.value = ''; 
   }
 }
 
-// Event listener for the Add Task button
+
 addButton.addEventListener('click', addTask);
 
-// Optional: Add "Enter" key functionality
 todoInput.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     addTask();
