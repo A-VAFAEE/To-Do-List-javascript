@@ -12,7 +12,8 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 600px;
+    min-height: 200px; /* Adjusted height */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
@@ -120,7 +121,37 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #218838;
 }
-#theme1 {
-  background-color: red;
-  color: black;
+#theme2 {
+  background-image: url(images.jpeg);
 }
+#theme1 {background-image: url('path/to/image1.jpg');}
+#theme3 {background-image: url('path/to/image3.jpg');}
+#theme4 {background-image: url('path/to/image4.jpg');}
+#theme5 {background-image: url('path/to/image5.jpg');}
+#theme6 {background-image: url('path/to/image6.jpg');}
+#theme7 {background-image: url('path/to/image7.jpg');}
+
+#age1 {
+  padding: 12px;
+
+
+}
+
+
+.input-group {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  margin-top: 300px;
+
+}
+
+
+input[type=radio] {
+  height:20px;
+  width: 40px;
+  
+}
+
