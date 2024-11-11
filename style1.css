@@ -1,0 +1,219 @@
+body {
+  font-family: 'Newsreader', serif;
+    /* background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; */
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: aliceblue;
+}
+
+.navbar a { /*this is for the home button, the a link*/
+  /*makes every link align to the left, the next one to the right 
+  of the previous. If write, float: right, then the next one will be to the left of the previous. */
+  float: left;
+  font-size: 23px;
+  padding: 14px 16px;
+  text-decoration: none; /*to remove the underline of the link*/
+}
+
+#page1 {
+  color: #426B1F;
+  text-align: center;
+}
+
+.dropdown {
+  /* position: relative;
+  display: inline-block; */
+  float: right;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn { /*this is specifically for the list in the dropdown box*/
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  /*need to include these two lines because button doesn't follow the body styling if not specified*/
+  background-color: inherit; /* a property should inherit its value from its parent element */
+  font-family: inherit;  /*inherit the font from its parent element */
+  margin: 100; /* not doing anything here*/
+  border: none;
+  border-radius: 4px;
+}
+
+#archived {
+  float: right;
+  font-size: 16px; 
+  color: black;
+}
+
+#archived:hover {
+  border: 2px solid #426B1F;
+  border-radius: 8px;
+}
+
+#page1:hover {
+  text-decoration: underline;
+}
+
+.dropdown:hover .dropbtn {
+  border: 2px solid #426B1F;
+  border-radius: 8px;
+}
+ 
+.dropdown-content {/*styling for the list*/
+  display: none; /* need this, so the list only show when hovering */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown-content a { /*styling for the list of dropdown*/
+  float: none;  /* so that the list will be down*/
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  /* displays an element as a block element (like <p>). 
+  It starts on a new line, and takes up the whole width*/
+  display: block;  
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  border: 2px solid #426B1F; 
+  border-radius: 8px;
+}
+
+.dropdown:hover .dropdown-content { /* when hover over dropdown button, will show a list */ 
+  display: block;
+}
+
+#theme2 {
+  background-image: url(images.jpeg);
+}
+#theme1 {background-image: url('path/to/image1.jpg');}
+#theme3 {background-image: url('path/to/image3.jpg');}
+#theme4 {background-image: url('path/to/image4.jpg');}
+#theme5 {background-image: url('path/to/image5.jpg');}
+#theme6 {background-image: url('path/to/image6.jpg');}
+#theme7 {background-image: url('path/to/image7.jpg');}
+
+.todo-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 600px;
+  min-height: 200px; /* Adjusted height */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: auto; /* not sure how to center it vertically */
+}
+  
+#add-button {
+  font-family: inherit;
+  padding: 8px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+#add-button:hover {
+  background-color: #218838;
+}
+  
+  
+input[type="text"] {
+  padding: 8px;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+    
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.input-group {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  margin-top: 300px;
+
+}
+
+input[type=radio] {
+  height:20px;
+  width: 40px;
+  
+}
+
+/* #themeButton {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 90px;
+} */
+
+
+  /* .upperRight {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100%;
+    overflow: hidden;
+    background-color: aliceblue;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    float: left;
+    color: #426B1F;
+    text-align: center;
+    padding: 20px 20px;
+    text-decoration: none;
+    font-size: 20px;
+  } 
+
+.topnav {
+  width: 100%;
+  overflow: hidden;
+  background-color: aliceblue;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+} */
+  /* Styles for the dropdown menu */
