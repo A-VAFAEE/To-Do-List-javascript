@@ -4,20 +4,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0; */
+    height: 100vh; */
+    margin: 0px;
+    /* Center and scale the image nicely */
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .navbar {
   overflow: hidden;
   background-color: aliceblue;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
-.navbar a { /*this is for the home button, the a link*/
+.navbar a { /*this is for the home buttonback
+  , the a link*/
   /*makes every link align to the left, the next one to the right 
   of the previous. If write, float: right, then the next one will be to the left of the previous. */
   float: left;
-  padding: 14px 16px;
+  padding: 20px 20px;
   text-decoration: none; /*to remove the underline of the link*/
 }
 
@@ -27,7 +33,7 @@ body {
   text-align: center;
 }
 
-.dropdown {
+.dropdown { /* Themes button */
   /* position: relative;
   display: inline-block; */
   float: right;
@@ -39,7 +45,7 @@ body {
   border: none;
   outline: none;
   color: black;
-  padding: 14px 16px;
+  padding: 20px 16px;
   /*need to include these two lines because button doesn't follow the body styling if not specified*/
   background-color: inherit; /* a property should inherit its value from its parent element */
   font-family: inherit;  /*inherit the font from its parent element */
@@ -95,10 +101,12 @@ body {
   border-radius: 8px;
 }
 
+
 .dropdown:hover .dropdown-content { /* when hover over dropdown button, will show a list */ 
   display: block;
 }
 
+/* 
 #theme2 {
   background-image: url(images.jpeg);
 }
@@ -107,17 +115,20 @@ body {
 #theme4 {background-image: url('path/to/image4.jpg');}
 #theme5 {background-image: url('path/to/image5.jpg');}
 #theme6 {background-image: url('path/to/image6.jpg');}
-#theme7 {background-image: url('path/to/image7.jpg');}
+#theme7 {background-image: url('path/to/image7.jpg');} */
 
 .todo-container {
-  background-color: #fff;
+  background-color: #fffdd1;
   padding: 20px;
   border-radius: 8px;
   width: 600px;
   min-height: 200px; /* Adjusted height */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: auto; /* not sure how to center it vertically */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px; 
+  /* not sure how to center it vertically */
 }
   
 #add-button {
