@@ -2,6 +2,7 @@
 const todoInput = document.getElementById('todo-input');
 const addButton = document.getElementById('add-button');
 const todoList = document.getElementById('todo-list');
+const priorScale = document.getElementsByName('prioritize'); // this returns a collection of elements with the name "prioritize"
 
 function changeTheme ( theme ) {
   changeBackgroundColor(theme);
@@ -32,9 +33,23 @@ function changeBackgroundColor( theme ) {
 
 function addTask() {
   const taskText = todoInput.value.trim();
-  if (taskText) {
-    const listItem = document.createElement('li');
+  if (taskText) { // if there is text ented, then add the task to the list
+    const listItem = document.createElement('li');  
     listItem.textContent = taskText;
+    
+    // if one of the scale is checked, then add it to the task corresponding to it
+    // then uncheck it
+    // if the scale isn't checked, then don't add anything
+    if (priorScale[0].checked) {
+      listItem.textContent += " " + priorScale[0].value;
+      priorScale[0].checked = false; 
+    } else if (priorScale[1].checked) {
+      listItem.textContent += " " + priorScale[1].value;
+      priorScale[1].checked = false;
+    } else if (priorScale[2].checked) {
+      listItem.textContent += " " + priorScale[2].value;
+      priorScale[2].checked = false;
+    } 
  
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
