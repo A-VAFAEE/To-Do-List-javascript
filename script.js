@@ -12,22 +12,25 @@ function changeTheme ( theme ) {
 function changeBackgroundColor( theme ) {
   if (theme === 'study') {  
     document.body.style.backgroundColor = "lightblue"; 
-    document.body.style.backgroundImage = "url('studyImage2.jpg')";
+    document.body.style.backgroundImage = "url('images/studyImage2.jpg')";
   } else if (theme === 'vacation') {
     document.body.style.backgroundColor = "lightyellow";
-    document.body.style.backgroundImage = "url('vacationImage2.jpg')";
+    document.body.style.backgroundImage = "url('images/vacationImage2.jpg')";
   } else if (theme === 'finance') {
     document.body.style.backgroundColor = "lightgreen";
-    document.body.style.backgroundImage = "url('financeImage.jpg')";
+    document.body.style.backgroundImage = "url('images/financeImage.jpg')";
+
   } else if (theme === 'work') {
     document.body.style.backgroundColor = "lightgray";
-    document.body.style.backgroundImage = "url('workImage2.jpg')";
+    document.body.style.backgroundImage = "url('images/workImage1.jpg')";
+
   } else if (theme === 'chores') {
     document.body.style.backgroundColor = "lightpink";
-    document.body.style.backgroundImage = "url('choresImage2.jpg')";
+    document.body.style.backgroundImage = "url('images/choresImage2.jpg')";
+
   } else if (theme === 'grocery') {
     document.body.style.backgroundColor = "orange";
-    document.body.style.backgroundImage = "url('groceryImage5.jpg')";
+    document.body.style.backgroundImage = "url('images/groceryImage5.jpg')";
   }
 }
 
@@ -40,16 +43,22 @@ function addTask() {
     // if one of the scale is checked, then add it to the task corresponding to it
     // then uncheck it
     // if the scale isn't checked, then don't add anything
-    if (priorScale[0].checked) {
-      listItem.textContent += " " + priorScale[0].value;
-      priorScale[0].checked = false; 
-    } else if (priorScale[1].checked) {
-      listItem.textContent += " " + priorScale[1].value;
-      priorScale[1].checked = false;
-    } else if (priorScale[2].checked) {
-      listItem.textContent += " " + priorScale[2].value;
-      priorScale[2].checked = false;
-    } 
+    /* another way of doing this is first uncheck everything */
+    for (let i = 0; i < 3; i++) {
+      
+      priorScale[i].checked = false;
+    }
+
+    // if (priorScale[0].checked) {
+    //   listItem.textContent += " " + priorScale[0].value;
+    //   priorScale[0].checked = false; 
+    // } else if (priorScale[1].checked) {
+    //   listItem.textContent += " " + priorScale[1].value;
+    //   priorScale[1].checked = false;
+    // } else if (priorScale[2].checked) {
+    //   listItem.textContent += " " + priorScale[2].value;
+    //   priorScale[2].checked = false;
+    // } 
  
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';

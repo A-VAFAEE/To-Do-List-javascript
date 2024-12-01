@@ -1,22 +1,12 @@
 body {
   font-family: 'Newsreader', serif;
-    /* background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; */
-    margin: 0px;
-    /* Center and scale the image nicely */
+  /* Center and scale the image nicely */
+  margin: 0px;
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* width: auto;
-  height: auto;*/
-  /* width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  object-position: top; */
+  background-attachment: fixed;
 
 }
 
