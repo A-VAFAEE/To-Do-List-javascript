@@ -1,13 +1,16 @@
+html {
+  /* make the height of the html element to 100%*/
+  height: 100%;
+}
+
 body {
   font-family: 'Newsreader', serif;
-  /* Center and scale the image nicely */
   margin: 0px;
-  height: 100vh;
+  /* Center and scale the background image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-
+  background-attachment: fixed; /*so the image will not change when the page get*/
 }
 
 .navbar {
@@ -168,6 +171,27 @@ li {
   justify-content: space-between;
   align-items: center;
 }
+
+/* Styling for the summary box */
+/* .summary {
+  border:1px solid #218838;
+} */
+
+.summaryBox p {
+  display: inline-block;
+}
+
+.leftContent{
+  text-align: left;
+  /* width: 50%; */
+  max-width: 100%;
+}
+.rightContent{
+  text-align: right;
+  /* width: 50% ;*/
+  max-width: 100%;
+}
+
 
 
 .input-group {

@@ -7,7 +7,7 @@
   <title>Legendary To-do List</title>
   <link rel="stylesheet" href="style1.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Newsreader">
-  <script src="script.js" defer="true"></script>
+  <script src="script1.js" defer="true"></script>
 </head>
 
 <body>
@@ -24,12 +24,12 @@
           <button onclick="changeBackgroundColor()">Work</button>
           <button onclick="changeBackgroundColor()">Chores</button>
           <button onclick="changeBackgroundColor()">Grocery</button> -->          
-          <a href="#" onclick="changeBackgroundColor('study')">Study</a>
-          <a href="#" onclick="changeBackgroundColor('vacation')">Vacation</a>
-          <a href="#" onclick="changeBackgroundColor('finance')">Finance</a>
-          <a href="#" onclick="changeBackgroundColor('work')">Work</a>
-          <a href="#" onclick="changeBackgroundColor('chores')">Chores</a>
-          <a href="#" onclick="changeBackgroundColor('grocery')">Grocery</a>
+          <a href="#" onclick="changeTheme('study')">Study</a>
+          <a href="#" onclick="changeTheme('vacation')">Vacation</a>
+          <a href="#" onclick="changeTheme('finance')">Finance</a>
+          <a href="#" onclick="changeTheme('work')">Work</a>
+          <a href="#" onclick="changeTheme('chores')">Chores</a>
+          <a href="#" onclick="changeTheme('grocery')">Grocery</a>
         </div>
       </div>
     </div>
@@ -38,12 +38,17 @@
     <input type="text" id="todo-input" placeholder="Add a new task...">
     <button id="add-button">Add Task</button>
     <div>
-      <input type="radio" id="import1" name="prioritize" value="Not Important">
-      <label for="import1">1</label>
-      <input type="radio" id="import2" name="prioritize" value="Important">
-      <label for="import2">2</label>  
-      <input type="radio" id="import3" name="prioritize" value="Very Imporant">
-      <label for="import3">3</label>
+      <input type="radio" id="Netural" name="prioritize" value="1">
+      <label for="Netural">Netural</label>
+      <input type="radio" id="Important" name="prioritize" value="2">
+      <label for="Important">Important</label>  
+      <input type="radio" id="Very Important" name="prioritize" value="3">
+      <label for="Very Important">Very Imporant</label>
+    </div>
+    <div class="summaryBox">
+      <p class="leftContent">Number of tasks to do:</p>
+      <p class="rightContent" id="numSum"></p>
+      <button onclick="sortTask()">Sort</button>
     </div>
     <ul id="todo-list"></ul>
   </div>
