@@ -5,6 +5,7 @@ html {
 
 body {
   font-family: 'Newsreader', serif;
+  background-image: linear-gradient(rgb(0, 0, 0) , rgb(188, 188, 188));
   margin: 0px;
   /* Center and scale the background image nicely */
   background-position: center;
