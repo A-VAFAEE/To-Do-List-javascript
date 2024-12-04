@@ -1,0 +1,25 @@
+
+
+Ashkan Vafaee
+Student ID: 220627188
+Role : html, css, and javascript, test cases
+
+
+Phuong (Tracy) To
+Student ID: 219613397
+Role: javascript, html, and server side
+
+
+Problems/changes we encountered: 
+    + We have some problems saving the tasks the users have entered even after refreshing.
+    + We have some problems creating the Archived page that stores the finisihsed tasks from the users.
+    + We have some problems regarding conducting test cases because our functions do not have return.
+    + We have made some minor changes to our webpage design. Specifically, 
+        - background color of the page
+        - color of the tasks
+        - menu box
+        - having the number of tasks intead of number of lists
+
+
+
+

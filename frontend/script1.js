@@ -76,6 +76,8 @@ function changeBackgroundColor( theme ) {
     document.body.style.backgroundImage = "url('images/groceryImage5.jpg')";
   }
 }
+
+
 function changeTitle(theme) {
   switch (theme) {
     case "study":
@@ -129,6 +131,18 @@ function displayTask(taskText, priority) {
 
   listItem.appendChild(importScale);
 
+  // Create a checkbox for each task
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.addEventListener('change', (event) => {
+    if (event.target.checked) {
+      listItem.style.textDecoration = 'line-through';
+    } else {
+      listItem.style.textDecoration = 'none';
+    }
+  });
+  listItem.appendChild(checkbox);
+
   // For every new item/task, create a button 
   const removeButton = document.createElement('button');
   // Make the value of the button 'Remove
@@ -181,6 +195,18 @@ function addTask() {
       return response.json(); //If not, send the response down the line.
     });
     
+    // Create a checkbox for each task
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.addEventListener('change', (event) => {
+      if (event.target.checked) {
+        listItem.style.textDecoration = 'line-through';
+      } else {
+        listItem.style.textDecoration = 'none';
+      }
+    });
+    listItem.appendChild(checkbox);
+
     // For every new item/task, create a button 
     const removeButton = document.createElement('button');
     // Make the value of the button 'Remove
@@ -262,7 +288,6 @@ function removeTask(event) {
       }
     });
 
-
     parEle.remove();
     document.body.removeChild(confirmationBox);
       /* Update the number of task.
@@ -300,5 +325,26 @@ todoInput.addEventListener('keypress', (event) => {
   }
 });
 
-//Uncomment for testing at the CLI!
-// export { changeTheme, select }
+addButton.addEventListener('click', addTask);
+// Also respond when press enter
+todoInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    addTask();
+  }
+});
+
+
+
+// Add an event listener to each checkbox to toggle the crossed-off style
+todoList.addEventListener('change', (event) => {
+  if (event.target.type === 'checkbox') {
+    const listItem = event.target.parentElement;
+    if (event.target.checked) {
+      listItem.style.textDecoration = 'line-through';
+    } else {
+      listItem.style.textDecoration = 'none';
+    }
+  }
+});
+
+//export {changeTitle, addTask, removeTask };
