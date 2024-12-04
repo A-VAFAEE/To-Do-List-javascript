@@ -296,3 +296,4 @@ todoInput.addEventListener('keypress', (event) => {
     addTask();
   }
 });
+//export {changeTitle, addTask, removeTask };
