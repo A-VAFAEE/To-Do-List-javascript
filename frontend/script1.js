@@ -1,13 +1,51 @@
+/* CONSTANTS */
 const todoInput = document.getElementById('todo-input');
 const addButton = document.getElementById('add-button');
 const todoList = document.getElementById('todo-list');
 const priorScale = document.getElementsByName('prioritize'); // this returns a collection of elements with the name "prioritize"
-console.log(priorScale);
 const summary = document.getElementsByClassName('summaryBox');
+const apiUrl = 'http://localhost:8080/api/appendTask'; //URL where we will send our data
+const apiUrlGet = 'http://localhost:8080/api/getTask'; //URL where we will send our data
+const apiUrlDel = 'http://localhost:8080/api/deleteTask'; //URL where we will send our data
+const apiUrlNum = 'http://localhost:8080/api/numTask'; //URL where we will send our data
+
 var numTask = 0;
 var taskColor = ['lightblue', 'lightgreen', 'lightcoral'];
-// Declare a new dictionary
-var dictTask = {}; 
+
+fetch(apiUrlNum).then(response => {
+  if (!response.ok) { //If there server reports a problem, throw an error!
+    throw new Error('Network response was not ok');
+  }
+  return response.json(); //If not, send the response down the line.
+
+}).then( (data) => {
+  document.getElementById("numSum").innerText = data[0]["length"];
+});
+// this should occur automatically when the page is refreshed
+var tasks = [];
+fetch(apiUrlGet).then(response => {
+  if (!response.ok) { //If there server reports a problem, throw an error!
+    throw new Error('Network response was not ok');
+  }
+  return response.json(); //If not, send the response down the line.
+
+}).then( (data) => {
+  for (let i = 0; i < data.length; i++) {
+    tasks.push(data[i]);
+    displayTask(data[i]['text'], data[i]['priority']);
+    numTask++;
+  }
+});
+
+fetch(apiUrlNum).then(response => {
+  if (!response.ok) { //If there server reports a problem, throw an error!
+    throw new Error('Network response was not ok');
+  }
+  return response.json(); //If not, send the response down the line.
+
+}).then( (data) => {
+  document.getElementById("numSum").innerText = data[0]["length"];
+});
 
 function changeTheme ( theme ) {
   changeBackgroundColor(theme);
@@ -33,6 +71,7 @@ function changeBackgroundColor( theme ) {
     document.body.style.backgroundColor = "orange";
     document.body.style.backgroundImage = "url('images/groceryImage5.jpg')";
   }
+  return "lightblue"; 
 }
 function changeTitle(theme) {
   switch (theme) {
@@ -56,32 +95,88 @@ function changeTitle(theme) {
       break;
   }
 }
+
+function displayTask(taskText, priority) {
+  const listItem = document.createElement('li'); 
+  const importScale = document.createElement('p');
+
+  // Put the task entered as a new item in a list 
+  listItem.textContent = taskText;
+
+  // if one of the scale is checked, then add it to the task corresponding to it
+  // then uncheck it
+  // if the scale isn't checked, then don't add anything
+  selecPrio = "";
+
+  if (priority === "Netural") {
+    listItem.style.backgroundColor = 'lightblue';
+    selecPrio = priorScale[0].value;
+    importScale.textContent = `(${priorScale[0].value})`;
+
+  } else if (priority === "Important") {
+    listItem.style.backgroundColor = 'lightgreen';
+    selecPrio = priorScale[1].value;
+    importScale.textContent = `(${priorScale[1].value})`;
+
+  } else if (priority === "Very Important") {
+    listItem.style.backgroundColor = 'lightcoral';
+    selecPrio = priorScale[2].value;
+    importScale.textContent = `(${priorScale[2].value})`;
+  }
+
+  listItem.appendChild(importScale);
+
+  // For every new item/task, create a button 
+  const removeButton = document.createElement('button');
+  // Make the value of the button 'Remove
+  removeButton.textContent = 'Remove';
+  // When click on the remove button, pass it on to the function
+  removeButton.addEventListener('click', removeTask);
+  // removeButton.onclick = () => listItem.remove();
+  
+  // Add the remove button to each task
+  listItem.appendChild(removeButton);
+  // Add each task to the end of the list of child of todoList
+  todoList.appendChild(listItem);
+  // Clear out the input bar'
+  todoInput.value = '';
+}
+
 function addTask() {
   const taskText = todoInput.value.trim();
   if (taskText) { // if there is text entered, then add the task to the list
     const listItem = document.createElement('li'); 
     const importScale = document.createElement('p');
     
-    // console.log(importScale);
     // Put the task entered as a new item in a list 
     listItem.textContent = taskText;
+
     
     // if one of the scale is checked, then add it to the task corresponding to it
     // then uncheck it
     // if the scale isn't checked, then don't add anything
+    selecPrio = "";
     for (let i = 0; i < priorScale.length; i++) {
       if (priorScale[i].checked) {
-        // dictTask[taskText] = priorScale[i].id;
+
         importScale.textContent = `(${priorScale[i].value})`;
+
+        selecPrio = priorScale[i].value;
+
         listItem.style.backgroundColor = taskColor[i];
         priorScale[i].checked = false; // Uncheck after using
         break;
-      } else {
-        dictTask[taskText] = "0";
       }
     }
     listItem.appendChild(importScale);
     
+    // append to server list
+    fetch(apiUrl + '?text=' + taskText + '&isDone=' + false + '&priority=' + selecPrio).then(response => {
+      if (!response.ok) { //If there server reports a problem, throw an error!
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); //If not, send the response down the line.
+    });
     
     // For every new item/task, create a button 
     const removeButton = document.createElement('button');
@@ -102,6 +197,17 @@ function addTask() {
     Then display the count to HTML*/
     numTask += 1;
     document.getElementById("numSum").innerText = numTask;
+
+    fetch(apiUrlNum).then(response => {
+      if (!response.ok) { //If there server reports a problem, throw an error!
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); //If not, send the response down the line.
+    
+    }).then( (data) => {
+      document.getElementById("numSum").innerText = data[0]["length"];
+    });
+
   } else { 
     alert("Please enter a task!");
     return;
@@ -113,7 +219,14 @@ function removeTask(event) {
   var elmt = event.currentTarget;
   // get the parent element of the button, which is listItem
   var parEle = elmt.parentElement;
-  
+
+  var index = -1;
+  for (let i=0; i < numTask; i++) {
+    if (parEle.parentElement.children[i] == parEle) {
+      index = i;
+    } 
+  }
+
   // create a confirmation box
   const confirmationBox = document.createElement('div');
   confirmationBox.style.position = 'fixed';
@@ -137,8 +250,22 @@ function removeTask(event) {
 
   // If click yes button, then remove the listItem
   yesButton.onclick = () => {
+
+    // server
+    fetch(apiUrlDel + "?index=" + index).then(response => {
+      if (!response.ok) { //If there server reports a problem, throw an error!
+        throw new Error('Network response was not ok');
+      }
+    });
+
+
     parEle.remove();
     document.body.removeChild(confirmationBox);
+      /* Update the number of task.
+    Subtract one everytime the task is deleted
+    Then display the count to HTML */
+    numTask -= 1;
+    document.getElementById("numSum").innerText = Math.max(numTask,0);
   };
   confirmationBox.appendChild(yesButton);
 
@@ -155,12 +282,6 @@ function removeTask(event) {
 
   document.body.appendChild(confirmationBox);
 
-  
-  /* Update the number of task.
-  Subtract one everytime the task is deleted
-  Then display the count to HTML */
-  numTask -= 1;
-  document.getElementById("numSum").innerText = numTask;
 }
 
 // function sortTask() {
