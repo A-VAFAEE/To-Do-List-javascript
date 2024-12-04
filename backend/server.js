@@ -11,10 +11,32 @@ It reponds to API calls from a client.
 
 'use strict'; //in strict mode, scope of variables needs to be well defined 
 
-const express = require('express');
+const express = require('express'); //to run a server application
+const fs = require("fs"); //to read and write to a file
+const cors = require("cors"); //to get around cors issues.  browsers may restrict cross-origin HTTP requests initiated from scripts!
 const port = 8080;
 const app = express();
 var tasks = [];
+
+app.use(cors()); //manage cors headers
+app.use(express.json()); //messages will be passed in JSON
+app.use(express.urlencoded({ extended: true }));
+
+
+// Function 1
+function appendTask(task) {
+  tasks.push(task);
+  return tasks;
+}
+
+function removeTask(index) {
+  tasks.splice(index, 1);
+  return tasks;
+}
+
+function getNumberOfTasks() {
+  return tasks.length;
+}
 
 //route or endpoint
 app.get('/', (req, res) => {
@@ -26,9 +48,8 @@ app.get('/api/appendTask', (req, res) => {
   // send the response to the client	
   res.header("Access-Control-Allow-Origin", "*");
   var task = {"category": req.query.category, "text": req.query.text, "isDone": req.query.isDone, "priority": req.query.priority};
-  tasks.push(task);
+  appendTask(task);
   ///res.send("goodbye"); 
-  console.log(task); 
 });
 
 // get the task
@@ -52,9 +73,7 @@ app.get('/api/deleteTask', (req, res) => {
   // send the response to the client	
   res.header("Access-Control-Allow-Origin", "*");
   // var task = {"category": req.query.category, "text": req.query.text, "isDone": req.query.isDone, "priority": req.query.priority};
-  
-  var index = req.query.index;
-  tasks.splice(parseInt(index), 1);
+  removeTask(req.query.index);
 });
 
 // get the number of tasks
@@ -62,7 +81,7 @@ app.get('/api/numTask', (req, res) => {
   // send the response to the client	
   res.header("Access-Control-Allow-Origin", "*");
   
-  res.send([{length: tasks.length}]);  
+  res.send([{length: getNumberOfTasks()}]);  
 });
 
 
@@ -70,3 +89,6 @@ app.get('/api/numTask', (req, res) => {
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 }); //server will need to listen ... all the time!!
+
+// ADD THE LINE BELOW TO RUN TESTS
+// export { appendTask, removeTask, getNumberOfTasks }

@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@vitest/browser": "^2.1.8",
+    "playwright": "^1.49.0"
+  },
+  "scripts": {
+    "test:browser": "vitest"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "vitest": "^2.1.8"
+  }
+}

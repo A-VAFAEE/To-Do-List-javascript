@@ -55,9 +55,13 @@ function changeBackgroundColor( theme ) {
    if (theme === 'study') {  
     document.body.style.backgroundColor = "lightblue"; 
     document.body.style.backgroundImage = "url('images/studyImage2.jpg')";
+    return (document.body.style.backgroundColor == "lightblue");
+
   } else if (theme === 'vacation') {
     document.body.style.backgroundColor = "lightyellow";
     document.body.style.backgroundImage = "url('images/vacationImage2.jpg')";
+    return (document.body.style.backgroundColor == "lightyellow");
+    
   } else if (theme === 'finance') {
     document.body.style.backgroundColor = "lightgreen";
     document.body.style.backgroundImage = "url('images/financeImage.jpg')";
@@ -71,7 +75,6 @@ function changeBackgroundColor( theme ) {
     document.body.style.backgroundColor = "orange";
     document.body.style.backgroundImage = "url('images/groceryImage5.jpg')";
   }
-  return "lightblue"; 
 }
 function changeTitle(theme) {
   switch (theme) {
@@ -208,6 +211,7 @@ function addTask() {
       document.getElementById("numSum").innerText = data[0]["length"];
     });
 
+
   } else { 
     alert("Please enter a task!");
     return;
@@ -281,7 +285,6 @@ function removeTask(event) {
   confirmationBox.appendChild(noButton);
 
   document.body.appendChild(confirmationBox);
-
 }
 
 // function sortTask() {
@@ -296,3 +299,6 @@ todoInput.addEventListener('keypress', (event) => {
     addTask();
   }
 });
+
+//Uncomment for testing at the CLI!
+// export { changeTheme, select }

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@vitest/browser": "^2.1.8",
+    "jsdom": "^25.0.1",
+    "json": "^11.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}
